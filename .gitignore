@@ -1,0 +1,7 @@
+# --- System Files (Mac/Windows) ---
+.DS_Store
+Thumbs.db
+
+# --- Private Business Documents ---
+# This ensures the specific PDF is never uploaded
+20250725 HENRY Introduction.pdf
