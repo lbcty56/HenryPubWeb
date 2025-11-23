@@ -546,24 +546,26 @@ footer .logo-anim {
   margin-bottom: 10px;
 }
 
-/* --- 8. HALL BUYOUT (RESPONSIVE FIX) --- */
+/* --- 8. HALL BUYOUT (BULLETPROOF RESPONSIVE) --- */
 .hall-buyout {
   display: flex;
-  flex-wrap: wrap; /* Allows items to wrap to next line */
+  flex-wrap: wrap;
   width: 100%;
+  overflow: hidden; /* Prevents any accidental horizontal scroll */
 }
 
 .hall-img-side {
-  flex: 1 1 500px; /* Grow: 1, Shrink: 1, Basis: 500px */
+  flex: 1; /* Takes up equal space */
+  min-width: 500px; /* Desktop: Don't get smaller than 500px */
   background: url("https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop");
   background-size: cover;
   background-position: center;
-  position: relative;
-  min-height: 400px; /* Ensure image has height even when empty */
+  min-height: 500px;
 }
 
 .hall-content-side {
-  flex: 1 1 500px; /* Grow: 1, Shrink: 1, Basis: 500px */
+  flex: 1; /* Takes up equal space */
+  min-width: 500px; /* Desktop: Don't get smaller than 500px */
   background: #111;
   padding: 100px 80px;
   display: flex;
@@ -605,21 +607,28 @@ footer .logo-anim {
   font-size: 0.8rem;
 }
 
-/* --- MOBILE OVERRIDES FOR BUYOUT SECTION --- */
-@media (max-width: 900px) {
+/* --- MOBILE OVERRIDES (STRICT VERTICAL STACK) --- */
+@media (max-width: 1024px) {
+  .hall-buyout {
+    flex-direction: column; /* FORCE vertical stack */
+  }
+
   .hall-img-side {
-    flex: 1 1 100%; /* Force full width */
-    min-height: 300px; /* Smaller height for mobile */
+    width: 100%;
+    min-width: 0; /* Ignore the 500px rule */
+    min-height: 300px; /* Shorter image on mobile */
+    flex: none; /* Stop flex calculations */
   }
 
   .hall-content-side {
-    flex: 1 1 100%; /* Force full width */
-    padding: 60px 30px; /* Drastically reduce padding */
-    min-width: 0; /* Allow content to shrink properly */
+    width: 100%;
+    min-width: 0; /* Ignore the 500px rule */
+    padding: 60px 25px; /* Comfortable mobile padding */
+    flex: none; /* Stop flex calculations */
   }
 
   .section-title {
-    font-size: 2.2rem; /* Prevent title from breaking layout */
+    font-size: 2.5rem; /* Slightly smaller title */
   }
 }
 
