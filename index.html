@@ -21,10 +21,11 @@
     <header id="navbar">
       <div class="logo">
         <div class="logo-anim">
-          <!-- UPDATED PATH -->
           <img src="sources/logo.png" alt="HENRY Logo" />
         </div>
       </div>
+
+      <!-- Desktop Nav -->
       <nav>
         <ul>
           <li><a href="#about" data-i18n="nav_about">The Space</a></li>
@@ -39,7 +40,53 @@
           </li>
         </ul>
       </nav>
+
+      <!-- Hamburger Icon (New) -->
+      <div class="mobile-toggle" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </header>
+
+    <!-- Mobile Nav Overlay (New - Paste this immediately AFTER the </header> tag) -->
+    <div class="mobile-nav-overlay" id="mobileNav">
+      <ul>
+        <li>
+          <a href="#about" onclick="toggleMobileMenu()" data-i18n="nav_about"
+            >The Space</a
+          >
+        </li>
+        <li>
+          <a href="#rooms" onclick="toggleMobileMenu()" data-i18n="nav_rooms"
+            >Private Suites</a
+          >
+        </li>
+        <li>
+          <a href="#venue" onclick="toggleMobileMenu()" data-i18n="nav_venue"
+            >Venue Hire</a
+          >
+        </li>
+        <li>
+          <a href="#events" onclick="toggleMobileMenu()" data-i18n="nav_events"
+            >Gallery</a
+          >
+        </li>
+        <li>
+          <a
+            href="#contact"
+            onclick="toggleMobileMenu()"
+            data-i18n="nav_contact"
+            >Contact</a
+          >
+        </li>
+        <li>
+          <button class="lang-switch" onclick="toggleLanguage()">
+            繁體 / EN
+          </button>
+        </li>
+      </ul>
+    </div>
 
     <!-- HERO -->
     <section class="hero">

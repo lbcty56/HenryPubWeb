@@ -2,7 +2,7 @@
 const CONFIG = {
   // Production Number: "85263889388"
   // Test Number: Input your test number below
-  whatsappNumber: "85212345678", // Currently set to Test Number
+  whatsappNumber: "85297406008", // Currently set to Test Number
 };
 
 /* --- TRANSLATION DATA --- */
@@ -282,4 +282,20 @@ function handleBooking(e) {
 
   window.open(url, "_blank");
   closeModal();
+}
+
+/* --- MOBILE MENU FUNCTION --- */
+function toggleMobileMenu() {
+  const nav = document.getElementById("mobileNav");
+  const toggle = document.querySelector(".mobile-toggle");
+
+  nav.classList.toggle("active");
+  toggle.classList.toggle("active");
+
+  // Prevent scrolling when menu is open
+  if (nav.classList.contains("active")) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "auto";
+  }
 }
