@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HENRY | Luxury Pub & Event Space</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Link External CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- NAVIGATION -->
+    <header id="navbar">
+      <div class="logo">
+        <div class="logo-anim">
+          <!-- UPDATED PATH -->
+          <img src="sources/logo.png" alt="HENRY Logo" />
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#about" data-i18n="nav_about">The Space</a></li>
+          <li><a href="#rooms" data-i18n="nav_rooms">Private Suites</a></li>
+          <li><a href="#venue" data-i18n="nav_venue">Venue Hire</a></li>
+          <li><a href="#events" data-i18n="nav_events">Gallery</a></li>
+          <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+          <li>
+            <button class="lang-switch" onclick="toggleLanguage()">
+              繁體 / EN
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <h1>HENRY</h1>
+        <p data-i18n="hero_subtitle">LUXURY PUB & VENUE • KWUN TONG</p>
+        <div class="hero-btn-wrapper">
+          <button onclick="openModal()" class="btn-luxury" data-i18n="hero_cta">
+            Book Now
+          </button>
+        </div>
+      </div>
+      <div class="scroll-down"></div>
+    </section>
+
+    <!-- ABOUT / STATS -->
+    <section id="about" class="section-padding intro">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title text-gradient" data-i18n="about_title">
+            The Experience
+          </h2>
+          <span class="section-subtitle" data-i18n="about_sub"
+            >Unrivaled Atmosphere</span
+          >
+        </div>
+
+        <p data-i18n="about_text">
+          HENRY PUB is an 8,500 sq. ft. multi-functional masterpiece designed
+          for flexibility and luxury. Featuring a massive 12,000 sq. ft. rooftop
+          event space, we provide the ultimate setting for social gatherings,
+          concerts, and corporate prestige.
+        </p>
+
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number">8,500</span>
+            <span class="stat-label" data-i18n="stat_1">Interior Sq. Ft.</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">12,000</span>
+            <span class="stat-label" data-i18n="stat_2">Rooftop Sq. Ft.</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">200+</span>
+            <span class="stat-label" data-i18n="stat_3">Guest Capacity</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRIVATE ROOMS -->
+    <section id="rooms" class="section-padding rooms">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title text-gradient" data-i18n="rooms_title">
+            Private Suites
+          </h2>
+          <span class="section-subtitle" data-i18n="rooms_sub"
+            >Exclusive Karaoke Experience</span
+          >
+        </div>
+
+        <div class="cards-container">
+          <!-- Small Room -->
+          <div class="room-card">
+            <h3 class="room-title" data-i18n="room_s_title">Small Suite</h3>
+            <span class="room-capacity" data-i18n="room_s_cap"
+              >Up to 15 Guests</span
+            >
+            <div class="room-price" data-i18n="room_s_price">HK$1,800</div>
+            <span class="room-note" data-i18n="min_charge"
+              >Min. Charge (19:00 - 02:00)</span
+            >
+            <ul class="amenities-list">
+              <li data-i18n="feat_audio">Professional Audio</li>
+              <li data-i18n="feat_privacy">Total Privacy</li>
+              <li data-i18n="feat_service">Premium Service</li>
+            </ul>
+            <button
+              onclick="openModal('Small')"
+              class="btn-luxury"
+              data-i18n="btn_reserve"
+            >
+              Reserve
+            </button>
+          </div>
+
+          <!-- Medium Room -->
+          <div class="room-card">
+            <h3 class="room-title" data-i18n="room_m_title">Medium Suite</h3>
+            <span class="room-capacity" data-i18n="room_m_cap"
+              >Up to 25 Guests</span
+            >
+            <div class="room-price" data-i18n="room_m_price">HK$3,800</div>
+            <span class="room-note" data-i18n="min_charge"
+              >Min. Charge (19:00 - 02:00)</span
+            >
+            <ul class="amenities-list">
+              <li data-i18n="feat_lounge">Lounge Seating</li>
+              <li data-i18n="feat_light">Mood Lighting</li>
+              <li data-i18n="feat_service">Premium Service</li>
+            </ul>
+            <button
+              onclick="openModal('Medium')"
+              class="btn-luxury"
+              data-i18n="btn_reserve"
+            >
+              Reserve
+            </button>
+          </div>
+
+          <!-- Large Room -->
+          <div class="room-card" style="border-color: var(--gold-dark)">
+            <h3 class="room-title text-gold" data-i18n="room_l_title">
+              Grand Suite
+            </h3>
+            <span class="room-capacity" data-i18n="room_l_cap"
+              >Up to 40 Guests</span
+            >
+            <div class="room-price" data-i18n="room_l_price">HK$5,800</div>
+            <span class="room-note" data-i18n="min_charge"
+              >Min. Charge (19:00 - 02:00)</span
+            >
+            <ul class="amenities-list">
+              <li data-i18n="feat_vip">VIP Interior</li>
+              <li data-i18n="feat_dance">Dance Area</li>
+              <li data-i18n="feat_service">Premium Service</li>
+            </ul>
+            <button
+              onclick="openModal('Grand')"
+              class="btn-luxury"
+              data-i18n="btn_reserve"
+            >
+              Reserve
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VENUE BUYOUT -->
+    <section id="venue" class="hall-buyout">
+      <div class="hall-img-side"></div>
+      <div class="hall-content-side">
+        <h2
+          class="section-title text-gradient"
+          style="font-size: 2.5rem; text-align: left"
+          data-i18n="venue_title"
+        >
+          Main Hall Buyout
+        </h2>
+        <p style="color: #aaa; margin-bottom: 30px" data-i18n="venue_desc">
+          The ultimate choice for concerts, press conferences, and corporate
+          functions. Equipped with a 5x2m LED Screen, VSING System, and
+          Electronic Darts.
+        </p>
+
+        <div class="price-row">
+          <span data-i18n="venue_wd">Mon - Thu</span>
+          <span data-i18n="venue_wd_p">HK$300 / person</span>
+        </div>
+        <div class="price-row">
+          <span data-i18n="venue_we">Fri - Sat</span>
+          <span data-i18n="venue_we_p">HK$380 / person</span>
+        </div>
+
+        <ul class="hall-list">
+          <li data-i18n="venue_feat_1">Minimum 60 Guests / 4 Hours</li>
+          <li data-i18n="venue_feat_2">
+            Includes Red/White Wine, Beer, Soft Drinks
+          </li>
+          <li data-i18n="venue_feat_3">Stage & Professional Sound System</li>
+        </ul>
+
+        <button
+          onclick="openModal('Hall')"
+          class="btn-luxury"
+          style="width: fit-content"
+          data-i18n="btn_inquire"
+        >
+          Inquire Availability
+        </button>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="events" class="events">
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img
+            src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2070"
+            class="gallery-img"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-text" data-i18n="gal_1">Live Bands</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=2070"
+            class="gallery-img"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-text" data-i18n="gal_2">Private Parties</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=2070"
+            class="gallery-img"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-text" data-i18n="gal_3">Corporate</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?q=80&w=1974"
+            class="gallery-img"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-text" data-i18n="gal_4">Celebrations</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <div class="logo-anim">
+              <!-- UPDATED PATH -->
+              <img src="sources/logo.png" alt="HENRY Logo" />
+            </div>
+            <p
+              style="max-width: 300px; color: #555; margin-top: 20px"
+              data-i18n="footer_tag"
+            >
+              The premier destination for entertainment and luxury in Hong Kong.
+            </p>
+          </div>
+
+          <div class="footer-info">
+            <h4 data-i18n="contact_title">Visit Us</h4>
+            <p data-i18n="address_1">Flat B, 9/F, Hung To Centre</p>
+            <p data-i18n="address_2">94-96 How Ming Street, Kwun Tong</p>
+          </div>
+
+          <div class="footer-info">
+            <h4 data-i18n="reserve_title">Reservations</h4>
+            <p data-i18n="reserve_text">
+              Advance booking via WhatsApp required.
+            </p>
+            <a href="https://wa.me/85263889388" class="contact-number"
+              >+852 6388 9388</a
+            >
+          </div>
+        </div>
+        <div class="copyright">&copy; 2025 HENRY PUB. All Rights Reserved.</div>
+      </div>
+    </footer>
+
+    <!-- RESERVATION MODAL -->
+    <div id="bookingModal" class="modal-backdrop">
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+
+        <div class="modal-header">
+          <h3
+            class="text-gradient"
+            style="font-family: var(--font-display); font-size: 2rem"
+            data-i18n="modal_title"
+          >
+            Reserve Your Suite
+          </h3>
+          <p style="color: #888; font-size: 0.9rem" data-i18n="modal_desc">
+            Complete the details below to request your booking.
+          </p>
+        </div>
+
+        <form id="bookingForm" onsubmit="handleBooking(event)">
+          <!-- Selection Group -->
+          <div class="form-group">
+            <label data-i18n="form_type">Experience Type</label>
+            <select id="bookingType" required>
+              <option value="Small Suite" data-i18n="opt_small">
+                Small Suite (Max 15)
+              </option>
+              <option value="Medium Suite" data-i18n="opt_med">
+                Medium Suite (Max 25)
+              </option>
+              <option value="Grand Suite" data-i18n="opt_grand">
+                Grand Suite (Max 40)
+              </option>
+              <option value="Main Hall" data-i18n="opt_hall">
+                Main Hall Buyout
+              </option>
+            </select>
+          </div>
+
+          <!-- Date & Time Group -->
+          <div class="form-row">
+            <div class="form-group">
+              <label data-i18n="form_date">Date</label>
+              <input type="date" id="bookingDate" required min="2023-01-01" />
+            </div>
+            <div class="form-group">
+              <label data-i18n="form_time">Time</label>
+              <input type="time" id="bookingTime" required />
+            </div>
+          </div>
+
+          <!-- Guest Info -->
+          <div class="form-group">
+            <label data-i18n="form_name">Guest Name</label>
+            <input
+              type="text"
+              id="guestName"
+              placeholder="Mr. / Ms."
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label data-i18n="form_req">Special Requests</label>
+            <textarea
+              id="specialReq"
+              rows="2"
+              placeholder="Beverages, decorations, etc."
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="btn-luxury full-width"
+            data-i18n="btn_submit"
+          >
+            Request Reservation
+          </button>
+
+          <p class="disclaimer" data-i18n="form_note">
+            *Submission redirects to WhatsApp for final confirmation. Service
+            charge applies.
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <!-- Link External JS -->
+    <script src="script.js"></script>
+  </body>
+</html>
