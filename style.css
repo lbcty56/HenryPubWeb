@@ -546,24 +546,24 @@ footer .logo-anim {
   margin-bottom: 10px;
 }
 
-/* --- 8. HALL BUYOUT --- */
+/* --- 8. HALL BUYOUT (RESPONSIVE FIX) --- */
 .hall-buyout {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Allows items to wrap to next line */
+  width: 100%;
 }
 
 .hall-img-side {
-  flex: 1;
-  min-width: 500px;
+  flex: 1 1 500px; /* Grow: 1, Shrink: 1, Basis: 500px */
   background: url("https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop");
   background-size: cover;
   background-position: center;
   position: relative;
+  min-height: 400px; /* Ensure image has height even when empty */
 }
 
 .hall-content-side {
-  flex: 1;
-  min-width: 500px;
+  flex: 1 1 500px; /* Grow: 1, Shrink: 1, Basis: 500px */
   background: #111;
   padding: 100px 80px;
   display: flex;
@@ -603,6 +603,24 @@ footer .logo-anim {
   color: var(--gold-main);
   margin-right: 15px;
   font-size: 0.8rem;
+}
+
+/* --- MOBILE OVERRIDES FOR BUYOUT SECTION --- */
+@media (max-width: 900px) {
+  .hall-img-side {
+    flex: 1 1 100%; /* Force full width */
+    min-height: 300px; /* Smaller height for mobile */
+  }
+
+  .hall-content-side {
+    flex: 1 1 100%; /* Force full width */
+    padding: 60px 30px; /* Drastically reduce padding */
+    min-width: 0; /* Allow content to shrink properly */
+  }
+
+  .section-title {
+    font-size: 2.2rem; /* Prevent title from breaking layout */
+  }
 }
 
 /* --- 9. EVENTS GRID --- */
@@ -934,5 +952,51 @@ select option {
 @media (max-width: 768px) {
   .mobile-toggle {
     display: flex;
+  }
+}
+/* --- UPDATED EXIT BUTTON STYLES --- */
+.overlay-close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+
+  /* FORCE SQUARE SHAPE FOR PERFECT ROTATION */
+  width: 60px;
+  height: 60px;
+
+  /* Flexbox to center the X inside the square */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 3.5rem;
+  color: var(--gold-main);
+  cursor: pointer;
+  z-index: 1600;
+
+  /* Ensure rotation happens from the exact center */
+  transform-origin: center center;
+  transition: all 0.4s ease;
+
+  /* Remove default margins that might offset the center */
+  margin: 0;
+  padding: 0;
+  line-height: 1; /* Neutralize line-height offsets */
+  font-family: sans-serif;
+}
+
+.overlay-close:hover {
+  color: #fff;
+  transform: rotate(90deg); /* Now spins perfectly in place */
+}
+
+/* Adjust for smaller screens */
+@media (max-width: 480px) {
+  .overlay-close {
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    font-size: 3rem;
   }
 }
