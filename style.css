@@ -24,8 +24,14 @@
     #aa771c
   );
 
-  --font-display: "Cinzel", serif;
-  --font-body: "Montserrat", sans-serif;
+  /* UPDATED FONT STACKS */
+  /* 1. Display: Cinzel for English + Songti/Serif for Chinese Headings */
+  --font-display: "Cinzel", "Songti SC", "STSong", "Noto Serif SC", "SimSun",
+    serif;
+
+  /* 2. Body: Montserrat for English + PingFang/Sans for Chinese Text */
+  --font-body: "Montserrat", "PingFang SC", "Heiti SC", "Noto Sans SC",
+    "Microsoft YaHei", sans-serif;
 
   --nav-height: 80px;
   --transition-smooth: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
@@ -207,7 +213,7 @@ nav a:hover {
 /* Language Switcher */
 .lang-switch {
   cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid transparent;
   padding: 5px 15px;
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -482,7 +488,7 @@ footer .logo-anim {
   letter-spacing: 2px;
 }
 
-/* --- 7. ROOMS (CARDS) --- */
+/* --- 7. ROOMS (CARDS) - FIXED LAYOUT --- */
 .rooms {
   background: #0a0a0a;
 }
@@ -497,24 +503,15 @@ footer .logo-anim {
 .room-card {
   background: var(--bg-card);
   width: 350px;
-  padding: 50px 30px;
+  /* REMOVED PADDING HERE so slider touches edges */
+  padding: 0;
   text-align: center;
   border: 1px solid rgba(255, 255, 255, 0.05);
   position: relative;
   transition: var(--transition-smooth);
   overflow: hidden;
-}
-
-.room-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--gold-gradient);
-  transform: scaleX(0);
-  transition: var(--transition-smooth);
+  display: flex;
+  flex-direction: column; /* Stack slider and details vertically */
 }
 
 .room-card:hover {
@@ -522,19 +519,81 @@ footer .logo-anim {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   border-color: rgba(212, 175, 55, 0.3);
 }
-.room-card:hover::before {
-  transform: scaleX(1);
+
+/* New Wrapper for Text Content */
+.room-details {
+  padding: 30px; /* Padding moved here */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+/* --- SLIDER STYLES (FIXED HEIGHT) --- */
+.room-slider-container {
+  position: relative;
+  width: 100%;
+  height: 250px; /* STRICT HEIGHT ENFORCEMENT */
+  overflow: hidden;
+  background: #000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.room-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* Fill the 250px container */
+  object-fit: cover; /* Crop image nicely, don't stretch */
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.room-slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Navigation Arrows */
+.slider-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 1.5rem;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.5); /* Darker background for visibility */
+  transition: 0.3s;
+  -webkit-user-select: none;
+  user-select: none;
+  line-height: 1;
+}
+
+.slider-nav:hover {
+  background: var(--gold-main);
+  color: #000;
+}
+
+.slider-nav.prev {
+  left: 0;
+}
+.slider-nav.next {
+  right: 0;
+}
+
+/* Text Styles */
 .room-title {
   font-family: var(--font-display);
   font-size: 1.8rem;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 .room-capacity {
   color: var(--text-muted);
   font-size: 0.9rem;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   display: block;
 }
 
@@ -548,17 +607,17 @@ footer .logo-anim {
 .room-note {
   font-size: 0.75rem;
   color: #555;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   display: block;
 }
 
 .amenities-list {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   font-size: 0.9rem;
   color: #999;
 }
 .amenities-list li {
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 /* --- 8. HALL BUYOUT (RESPONSIVE FIX) --- */

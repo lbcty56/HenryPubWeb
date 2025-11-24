@@ -12,7 +12,21 @@ const CONFIG = {
     "https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=2070", // Party/Crowd
     "https://images.unsplash.com/photo-1574096079513-d8259312b785?q=80&w=2068", // Rooftop Vibe
   ],
-  slideInterval: 5000, // Time in ms (5 seconds)
+  slideInterval: 2000, // Time in ms (5 seconds)
+  roomImages: {
+    small: [
+      "https://images.unsplash.com/photo-1595405434753-3c9789218d6c?q=80&w=1000", // Placeholder
+      "https://images.unsplash.com/photo-1560185127-6ed189bf02f4?q=80&w=1000",
+    ],
+    medium: [
+      "https://images.unsplash.com/photo-1522771753035-1a5b6562f329?q=80&w=1000", // Placeholder
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1000",
+    ],
+    grand: [
+      "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?q=80&w=1000", // Placeholder
+      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80&w=1000",
+    ],
+  },
 };
 
 /* --- TRANSLATION DATA --- */
@@ -341,8 +355,60 @@ function initHeroSlideshow() {
   }, CONFIG.slideInterval);
 }
 
+/* --- ROOM SLIDER LOGIC --- */
+function initRoomSliders() {
+  // Select all slider containers
+  const containers = document.querySelectorAll(".room-slider-container");
+
+  containers.forEach((container) => {
+    const type = container.getAttribute("data-room-type");
+    const images = CONFIG.roomImages[type];
+
+    if (!images || images.length === 0) return;
+
+    // 1. Inject Images
+    let html = "";
+    images.forEach((src, index) => {
+      // First image is active by default
+      const activeClass = index === 0 ? "active" : "";
+      html += `<img src="${src}" class="room-slide ${activeClass}" data-index="${index}">`;
+    });
+
+    // 2. Inject Controls (Arrows)
+    html += `
+      <div class="slider-nav prev" onclick="moveRoomSlide(this, -1)">&#10094;</div>
+      <div class="slider-nav next" onclick="moveRoomSlide(this, 1)">&#10095;</div>
+    `;
+
+    container.innerHTML = html;
+  });
+}
+
+function moveRoomSlide(btn, direction) {
+  const container = btn.parentElement;
+  const slides = container.querySelectorAll(".room-slide");
+  let activeIndex = 0;
+
+  // Find current active index
+  slides.forEach((slide, index) => {
+    if (slide.classList.contains("active")) {
+      activeIndex = index;
+      slide.classList.remove("active");
+    }
+  });
+
+  // Calculate new index (Looping)
+  let newIndex = activeIndex + direction;
+  if (newIndex < 0) newIndex = slides.length - 1;
+  if (newIndex >= slides.length) newIndex = 0;
+
+  // Show new slide
+  slides[newIndex].classList.add("active");
+}
+
 // Initialize when DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
   initHeroSlideshow();
+  initRoomSliders();
   // ... existing observers ...
 });
