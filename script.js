@@ -13,16 +13,16 @@ const CONFIG = {
   slideInterval: 5000, // Time in ms (5 seconds)
   roomImages: {
     small: [
-      "https://images.unsplash.com/photo-1595405434753-3c9789218d6c?q=80&w=1000", // Placeholder
-      "https://images.unsplash.com/photo-1560185127-6ed189bf02f4?q=80&w=1000",
+      "./sources/private_rooms/small1.jpeg", // Placeholder
+      "./sources/private_rooms/small2.jpeg",
     ],
     medium: [
-      "https://images.unsplash.com/photo-1522771753035-1a5b6562f329?q=80&w=1000", // Placeholder
-      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1000",
+      "./sources/private_rooms/medium1.jpeg", // Placeholder
+      "./sources/private_rooms/medium2.jpeg",
     ],
     grand: [
-      "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?q=80&w=1000", // Placeholder
-      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80&w=1000",
+      "./sources/private_rooms/premium1.jpeg", // Placeholder
+      "./sources/private_rooms/premium2.jpeg",
     ],
   },
 };
