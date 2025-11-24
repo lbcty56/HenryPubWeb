@@ -7,12 +7,10 @@ const CONFIG = {
   // HERO SLIDESHOW IMAGES
   // You can use local paths like 'sources/photo1.jpg' or external URLs
   heroImages: [
-    "https://images.unsplash.com/photo-1571607866388-6c4064842a64?q=80&w=2071", // Bar Interior
-    "https://images.unsplash.com/photo-1514362545857-3bc16549766b?q=80&w=2070", // Cocktails
-    "https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=2070", // Party/Crowd
-    "https://images.unsplash.com/photo-1574096079513-d8259312b785?q=80&w=2068", // Rooftop Vibe
+    "./sources/hero/bar.jpeg", // Bar Interior
+    "./sources/hero/door.jpeg", // Cocktails
   ],
-  slideInterval: 2000, // Time in ms (5 seconds)
+  slideInterval: 5000, // Time in ms (5 seconds)
   roomImages: {
     small: [
       "https://images.unsplash.com/photo-1595405434753-3c9789218d6c?q=80&w=1000", // Placeholder
@@ -50,8 +48,9 @@ const translations = {
     rooms_sub: "Exclusive Karaoke Experience",
     room_s_title: "Small Suite",
     room_s_cap: "Up to 15 Guests",
+    min_charge: "Minimum Charge",
     room_s_price: "HK$1,800",
-    min_charge: "Min. Charge (19:00 - 02:00)",
+    period: "Period: 19:00 - 02:00",
     feat_audio: "Professional Audio",
     feat_privacy: "Total Privacy",
     feat_service: "Premium Service",
@@ -125,8 +124,9 @@ const translations = {
     rooms_sub: "尊貴私人體驗",
     room_s_title: "細房",
     room_s_cap: "容納 15 人",
+    min_charge: "最低消費",
     room_s_price: "HK$1,800",
-    min_charge: "最低消費 (19:00 - 02:00)",
+    period: "時段: 19:00 - 02:00",
     feat_audio: "專業音響系統",
     feat_privacy: "極高私隱度",
     feat_service: "尊貴服務",
@@ -326,11 +326,13 @@ function toggleMobileMenu() {
   }
 }
 
-/* --- HERO SLIDESHOW LOGIC --- */
+/* --- HERO SLIDESHOW LOGIC (FIXED) --- */
 function initHeroSlideshow() {
   const container = document.getElementById("hero-slideshow");
   const images = CONFIG.heroImages;
-  let currentIndex = 0;
+
+  // Safety check
+  if (!container || images.length === 0) return;
 
   // 1. Create Slide Elements
   images.forEach((imgSrc, index) => {
@@ -340,18 +342,20 @@ function initHeroSlideshow() {
     container.appendChild(slide);
   });
 
-  // 2. Start Cycling
+  // 2. Define slides variable ONCE (Performance fix)
+  const slides = document.querySelectorAll(".hero-slide");
+  let currentIndex = 0;
+
+  // 3. Start Cycling
   setInterval(() => {
-    const slides = document.querySelectorAll(".hero-slide");
-
-    // Remove active class from current
-    slides[currentIndex].classList.remove("active");
-
-    // Calculate next index
+    // Identify current and next
+    const currentSlide = slides[currentIndex];
     currentIndex = (currentIndex + 1) % slides.length;
+    const nextSlide = slides[currentIndex];
 
-    // Add active class to next
-    slides[currentIndex].classList.add("active");
+    // Swap classes
+    currentSlide.classList.remove("active");
+    nextSlide.classList.add("active");
   }, CONFIG.slideInterval);
 }
 

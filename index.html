@@ -163,8 +163,9 @@
             <div class="room-details">
               <h3 class="room-title" data-i18n="room_s_title">Small Suite</h3>
               <span class="room-capacity" data-i18n="room_s_cap">Up to 15 Guests</span>
+              <div class="room-min-charge" data-i18n="min_charge">Minimum Charge</div>
               <div class="room-price" data-i18n="room_s_price">HK$1,800</div>
-              <span class="room-note" data-i18n="min_charge">Min. Charge (19:00 - 02:00)</span>
+              <span class="room-note" data-i18n="period">Period 19:00 - 02:00</span>
               <ul class="amenities-list">
                 <li data-i18n="feat_audio">Professional Audio</li>
                 <li data-i18n="feat_privacy">Total Privacy</li>
@@ -181,8 +182,9 @@
             <div class="room-details">
               <h3 class="room-title" data-i18n="room_m_title">Medium Suite</h3>
               <span class="room-capacity" data-i18n="room_m_cap">Up to 25 Guests</span>
+              <div class="room-min-charge" data-i18n="min_charge">Minimum Charge</div>
               <div class="room-price" data-i18n="room_m_price">HK$3,800</div>
-              <span class="room-note" data-i18n="min_charge">Min. Charge (19:00 - 02:00)</span>
+              <span class="room-note" data-i18n="period">Period 19:00 - 02:00</span>
               <ul class="amenities-list">
                 <li data-i18n="feat_lounge">Lounge Seating</li>
                 <li data-i18n="feat_light">Mood Lighting</li>
@@ -199,8 +201,9 @@
             <div class="room-details">
               <h3 class="room-title text-gold" data-i18n="room_l_title">Grand Suite</h3>
               <span class="room-capacity" data-i18n="room_l_cap">Up to 40 Guests</span>
+              <div class="room-min-charge" data-i18n="min_charge">Minimum Charge</div>
               <div class="room-price" data-i18n="room_l_price">HK$5,800</div>
-              <span class="room-note" data-i18n="min_charge">Min. Charge (19:00 - 02:00)</span>
+              <span class="room-note" data-i18n="period">Period 19:00 - 02:00</span>
               <ul class="amenities-list">
                 <li data-i18n="feat_vip">VIP Interior</li>
                 <li data-i18n="feat_dance">Dance Area</li>
@@ -214,7 +217,16 @@
 
     <!-- VENUE BUYOUT -->
     <section id="venue" class="hall-buyout">
-      <div class="hall-img-side"></div>
+        <!-- LEFT SIDE: ANIMATED IMAGE CONTAINER -->
+      <div class="hall-img-side">
+        <img 
+          src="./sources/main_venue/main_venue_v1.jpeg" 
+          alt="Main Hall Atmosphere" 
+          class="cinematic-hall-img"
+        >
+        <!-- Overlay to ensure text/mood consistency if needed -->
+        <div class="hall-overlay"></div>
+      </div>
       <div class="hall-content-side">
         <h2
           class="section-title text-gradient"

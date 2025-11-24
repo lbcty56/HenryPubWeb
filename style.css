@@ -355,16 +355,22 @@ footer .logo-anim {
   height: 100%;
   background-size: cover;
   background-position: center;
+
+  /* Default State (Hidden) */
   opacity: 0;
   transform: scale(1);
-  transition: opacity 1.5s ease-in-out, transform 6s linear;
+  z-index: 1; /* Sit behind */
+
+  /* Transition Logic */
+  /* Opacity fades in 1.5s. Transform (Zoom) takes 7s for the "Ken Burns" effect */
+  transition: opacity 1.5s ease-in-out, transform 7s linear;
 }
 
-/* When active: Visible and slowly zooming in */
+/* When active: Visible, Zooming, and On Top */
 .hero-slide.active {
-  opacity: 0.6; /* Darkened slightly for text readability */
-  transform: scale(1.1); /* The Ken Burns Effect */
-  z-index: 2;
+  opacity: 0.6; /* Darkened for text readability */
+  transform: scale(1.15); /* Slow zoom destination */
+  z-index: 2; /* Sit on top of the fading out slide */
 }
 
 /* Ensure content sits on top of images */
@@ -502,25 +508,45 @@ footer .logo-anim {
   flex-wrap: wrap;
 }
 
+/* --- ROOM CARD STYLING --- */
 .room-card {
   background: var(--bg-card);
   width: 100%;
   max-width: 350px;
-  /* REMOVED PADDING HERE so slider touches edges */
   padding: 0;
   text-align: center;
   border: 1px solid rgba(255, 255, 255, 0.05);
-  position: relative;
+  position: relative; /* Essential for positioning the hover effect */
   transition: var(--transition-smooth);
-  overflow: hidden;
+  overflow: hidden; /* Keeps the slider inside */
   display: flex;
-  flex-direction: column; /* Stack slider and details vertically */
+  flex-direction: column;
 }
 
+/* 1. The "Lift" Effect */
 .room-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  border-color: rgba(212, 175, 55, 0.3);
+  transform: translateY(-10px); /* Moves card up */
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6); /* Deep luxury shadow */
+  border-color: rgba(212, 175, 55, 0.3); /* Subtle border highlight */
+}
+
+/* 2. The "Bottom Gold Line" Effect */
+.room-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%; /* Start from center */
+  transform: translateX(-50%); /* Center alignment */
+  width: 0%; /* Start hidden */
+  height: 4px; /* Thickness of the bar */
+  background: var(--gold-main); /* Luxury Gold Color */
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1); /* Smooth easing */
+  z-index: 10; /* Ensure it sits on top of everything */
+}
+
+/* Expand the line on hover */
+.room-card:hover::after {
+  width: 100%;
 }
 
 /* New Wrapper for Text Content */
@@ -596,8 +622,15 @@ footer .logo-anim {
 .room-capacity {
   color: var(--text-muted);
   font-size: 0.9rem;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   display: block;
+}
+
+.room-min-charge {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--gold-main);
+  margin-bottom: 5px;
 }
 
 .room-price {
@@ -626,17 +659,58 @@ footer .logo-anim {
 /* --- 8. HALL BUYOUT (RESPONSIVE FIX) --- */
 .hall-buyout {
   display: flex;
-  flex-wrap: wrap; /* Allows items to wrap to next line */
+  flex-wrap: wrap;
   width: 100%;
+  background: #111; /* Fallback bg */
+  overflow: hidden; /* Keeps everything contained */
 }
 
 .hall-img-side {
-  flex: 1 1 500px; /* Grow: 1, Shrink: 1, Basis: 500px */
-  background: url("https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop");
-  background-size: cover;
-  background-position: center;
+  flex: 1 1 500px;
   position: relative;
-  min-height: 400px; /* Ensure image has height even when empty */
+  min-height: 500px; /* Taller for better drama */
+  overflow: hidden; /* CRITICAL: Masks the zooming image */
+}
+
+.cinematic-hall-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures no stretching */
+
+  /* The Animation: 25 seconds, infinite loop, smooth reversing */
+  animation: cinematicPan 25s ease-in-out infinite alternate;
+
+  /* Hardware acceleration for smoothness */
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* This adds a vignette effect to make it look more "pub-like" and less raw */
+.hall-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* THE KEYFRAME ANIMATION */
+@keyframes cinematicPan {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    /* Slow Zoom In + Slight visual rotation for depth */
+    transform: scale(1.15);
+  }
 }
 
 .hall-content-side {
