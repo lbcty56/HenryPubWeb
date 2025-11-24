@@ -3,6 +3,16 @@ const CONFIG = {
   // Production Number: "85263889388"
   // Test Number: Input your test number below
   whatsappNumber: "85297406008", // Currently set to Test Number
+
+  // HERO SLIDESHOW IMAGES
+  // You can use local paths like 'sources/photo1.jpg' or external URLs
+  heroImages: [
+    "https://images.unsplash.com/photo-1571607866388-6c4064842a64?q=80&w=2071", // Bar Interior
+    "https://images.unsplash.com/photo-1514362545857-3bc16549766b?q=80&w=2070", // Cocktails
+    "https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=2070", // Party/Crowd
+    "https://images.unsplash.com/photo-1574096079513-d8259312b785?q=80&w=2068", // Rooftop Vibe
+  ],
+  slideInterval: 5000, // Time in ms (5 seconds)
 };
 
 /* --- TRANSLATION DATA --- */
@@ -52,6 +62,7 @@ const translations = {
     venue_feat_1: "Minimum 60 Guests / 4 Hours",
     venue_feat_2: "Includes Red/White Wine, Beer, Soft Drinks",
     venue_feat_3: "Stage & Professional Sound System",
+    venue_feat_4: "Booking Required 7 Days in Advance",
     btn_inquire: "Inquire Availability",
     gal_1: "Live Bands",
     gal_2: "Private Parties",
@@ -92,7 +103,7 @@ const translations = {
     about_title: "極致體驗",
     about_sub: "非凡氛圍",
     about_text:
-      "HENRY PUB 為 8,500 呎多功能酒吧，樓上設 12,000 呎天台活動空間。我們為社交聚會、小型演唱會及商務會議提供最奢華的環境。",
+      "HENRY PUB 為 8,500 呎多功能酒吧，樓上設 12,000 呎天台活動空間。我們為小型演唱會、發佈會、生日會、社交聚會及商務會議提供靈活之選。",
     stat_1: "室內面積 (呎)",
     stat_2: "天台面積 (呎)",
     stat_3: "可容納人數",
@@ -118,7 +129,7 @@ const translations = {
     btn_reserve: "預約房間",
     venue_title: "大廳包場服務",
     venue_desc:
-      "大廳可容納 200 人，提供 5x2 米大型 LED 屏幕、VSING 系統及飛鏢機。適合舉辦發佈會、生日會或公司聚會。",
+      "大廳可容納 200 人，提供 5x2 米大型 LED 屏幕、VSING 系統及飛鏢機。適合小型演唱會、發佈會、生日會、社交聚會或商務會議。",
     venue_wd: "星期一至四",
     venue_wd_p: "每位 HK$300 起",
     venue_we: "星期五及六",
@@ -126,6 +137,7 @@ const translations = {
     venue_feat_1: "最低 60 人 / 4 小時",
     venue_feat_2: "提供紅/白酒、啤酒及汽水任飲",
     venue_feat_3: "舞台及專業音響設備",
+    venue_feat_4: "需提前最少 7 天預約",
     btn_inquire: "查詢包場",
     gal_1: "現場樂隊",
     gal_2: "私人派對",
@@ -299,3 +311,38 @@ function toggleMobileMenu() {
     document.body.style.overflow = "auto";
   }
 }
+
+/* --- HERO SLIDESHOW LOGIC --- */
+function initHeroSlideshow() {
+  const container = document.getElementById("hero-slideshow");
+  const images = CONFIG.heroImages;
+  let currentIndex = 0;
+
+  // 1. Create Slide Elements
+  images.forEach((imgSrc, index) => {
+    const slide = document.createElement("div");
+    slide.className = index === 0 ? "hero-slide active" : "hero-slide";
+    slide.style.backgroundImage = `url('${imgSrc}')`;
+    container.appendChild(slide);
+  });
+
+  // 2. Start Cycling
+  setInterval(() => {
+    const slides = document.querySelectorAll(".hero-slide");
+
+    // Remove active class from current
+    slides[currentIndex].classList.remove("active");
+
+    // Calculate next index
+    currentIndex = (currentIndex + 1) % slides.length;
+
+    // Add active class to next
+    slides[currentIndex].classList.add("active");
+  }, CONFIG.slideInterval);
+}
+
+// Initialize when DOM is ready
+document.addEventListener("DOMContentLoaded", () => {
+  initHeroSlideshow();
+  // ... existing observers ...
+});
