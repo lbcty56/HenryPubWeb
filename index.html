@@ -156,79 +156,60 @@
         <div class="cards-container">
           <!-- Small Room -->
           <div class="room-card">
-            <h3 class="room-title" data-i18n="room_s_title">Small Suite</h3>
-            <span class="room-capacity" data-i18n="room_s_cap"
-              >Up to 15 Guests</span
-            >
-            <div class="room-price" data-i18n="room_s_price">HK$1,800</div>
-            <span class="room-note" data-i18n="min_charge"
-              >Min. Charge (19:00 - 02:00)</span
-            >
-            <ul class="amenities-list">
-              <li data-i18n="feat_audio">Professional Audio</li>
-              <li data-i18n="feat_privacy">Total Privacy</li>
-              <li data-i18n="feat_service">Premium Service</li>
-            </ul>
-            <button
-              onclick="openModal('Small')"
-              class="btn-luxury"
-              data-i18n="btn_reserve"
-            >
-              Reserve
-            </button>
+            <!-- Slider sits at the top, edge-to-edge -->
+            <div class="room-slider-container" data-room-type="small"></div>
+            
+            <!-- Text content sits inside a padded wrapper -->
+            <div class="room-details">
+              <h3 class="room-title" data-i18n="room_s_title">Small Suite</h3>
+              <span class="room-capacity" data-i18n="room_s_cap">Up to 15 Guests</span>
+              <div class="room-price" data-i18n="room_s_price">HK$1,800</div>
+              <span class="room-note" data-i18n="min_charge">Min. Charge (19:00 - 02:00)</span>
+              <ul class="amenities-list">
+                <li data-i18n="feat_audio">Professional Audio</li>
+                <li data-i18n="feat_privacy">Total Privacy</li>
+                <li data-i18n="feat_service">Premium Service</li>
+              </ul>
+              <button onclick="openModal('Small')" class="btn-luxury" data-i18n="btn_reserve">Reserve</button>
+            </div>
           </div>
-
+        
           <!-- Medium Room -->
           <div class="room-card">
-            <h3 class="room-title" data-i18n="room_m_title">Medium Suite</h3>
-            <span class="room-capacity" data-i18n="room_m_cap"
-              >Up to 25 Guests</span
-            >
-            <div class="room-price" data-i18n="room_m_price">HK$3,800</div>
-            <span class="room-note" data-i18n="min_charge"
-              >Min. Charge (19:00 - 02:00)</span
-            >
-            <ul class="amenities-list">
-              <li data-i18n="feat_lounge">Lounge Seating</li>
-              <li data-i18n="feat_light">Mood Lighting</li>
-              <li data-i18n="feat_service">Premium Service</li>
-            </ul>
-            <button
-              onclick="openModal('Medium')"
-              class="btn-luxury"
-              data-i18n="btn_reserve"
-            >
-              Reserve
-            </button>
+            <div class="room-slider-container" data-room-type="medium"></div>
+            
+            <div class="room-details">
+              <h3 class="room-title" data-i18n="room_m_title">Medium Suite</h3>
+              <span class="room-capacity" data-i18n="room_m_cap">Up to 25 Guests</span>
+              <div class="room-price" data-i18n="room_m_price">HK$3,800</div>
+              <span class="room-note" data-i18n="min_charge">Min. Charge (19:00 - 02:00)</span>
+              <ul class="amenities-list">
+                <li data-i18n="feat_lounge">Lounge Seating</li>
+                <li data-i18n="feat_light">Mood Lighting</li>
+                <li data-i18n="feat_service">Premium Service</li>
+              </ul>
+              <button onclick="openModal('Medium')" class="btn-luxury" data-i18n="btn_reserve">Reserve</button>
+            </div>
           </div>
-
+        
           <!-- Large Room -->
-          <div class="room-card" style="border-color: var(--gold-dark)">
-            <h3 class="room-title text-gold" data-i18n="room_l_title">
-              Grand Suite
-            </h3>
-            <span class="room-capacity" data-i18n="room_l_cap"
-              >Up to 40 Guests</span
-            >
-            <div class="room-price" data-i18n="room_l_price">HK$5,800</div>
-            <span class="room-note" data-i18n="min_charge"
-              >Min. Charge (19:00 - 02:00)</span
-            >
-            <ul class="amenities-list">
-              <li data-i18n="feat_vip">VIP Interior</li>
-              <li data-i18n="feat_dance">Dance Area</li>
-              <li data-i18n="feat_service">Premium Service</li>
-            </ul>
-            <button
-              onclick="openModal('Grand')"
-              class="btn-luxury"
-              data-i18n="btn_reserve"
-            >
-              Reserve
-            </button>
+          <div class="room-card" style="border-color: var(--gold-dark);">
+            <div class="room-slider-container" data-room-type="grand"></div>
+            
+            <div class="room-details">
+              <h3 class="room-title text-gold" data-i18n="room_l_title">Grand Suite</h3>
+              <span class="room-capacity" data-i18n="room_l_cap">Up to 40 Guests</span>
+              <div class="room-price" data-i18n="room_l_price">HK$5,800</div>
+              <span class="room-note" data-i18n="min_charge">Min. Charge (19:00 - 02:00)</span>
+              <ul class="amenities-list">
+                <li data-i18n="feat_vip">VIP Interior</li>
+                <li data-i18n="feat_dance">Dance Area</li>
+                <li data-i18n="feat_service">Premium Service</li>
+              </ul>
+              <button onclick="openModal('Grand')" class="btn-luxury" data-i18n="btn_reserve">Reserve</button>
+            </div>
           </div>
         </div>
-      </div>
     </section>
 
     <!-- VENUE BUYOUT -->
