@@ -839,9 +839,9 @@ footer {
 /* THE GRID SYSTEM */
 .footer-content {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr; /* 3 Columns: Brand, Info, Map */
-  gap: 60px;
-  align-items: start;
+  grid-template-columns: 1fr 1fr; /* 3 Columns: Brand, Info, Map */
+  gap: 50px;
+  align-items: around;
   margin-bottom: 0;
 }
 
@@ -849,7 +849,7 @@ footer {
 .brand-col {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 }
 
 /* Brand Lockup: Holds the Logo Image + "HENRY" Text */
@@ -923,32 +923,6 @@ footer {
   color: var(--gold-main);
 }
 
-/* --- COLUMN 3: MAP --- */
-.map-frame {
-  width: 100%;
-  height: 280px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  position: relative;
-  overflow: hidden;
-  transition: all 0.5s ease;
-}
-
-.map-frame iframe {
-  width: 100%;
-  height: 100%;
-  /* Dark Mode Filter */
-  filter: grayscale(100%) invert(92%) contrast(83%);
-  transition: filter 0.5s ease;
-}
-
-.map-frame:hover {
-  border-color: var(--gold-main);
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-}
-.map-frame:hover iframe {
-  filter: grayscale(80%) invert(92%) contrast(90%);
-}
-
 /* --- COPYRIGHT --- */
 .copyright {
   font-size: 0.75rem;
@@ -964,12 +938,6 @@ footer {
   .footer-content {
     grid-template-columns: 1fr 1fr; /* 2 Columns */
     gap: 40px;
-  }
-  .map-col {
-    grid-column: span 2; /* Map takes full width at bottom */
-  }
-  .map-frame {
-    height: 250px;
   }
 }
 
@@ -998,10 +966,6 @@ footer {
   }
   .footer-brand-text {
     font-size: 2rem;
-  }
-
-  .map-frame {
-    height: 300px;
   }
 
   .mobile-hide {
