@@ -295,7 +295,7 @@ function handleBooking(e) {
   const req = document.getElementById("specialReq").value;
 
   // 2. Format Message
-  let message = `*NEW RESERVATION REQUEST*\n\n`;
+  let message = `HENRY PUB RESERVATION REQUEST\n\n`;
   message += `👤 Name: ${name}\n`;
   message += `🏠 Type: ${type}\n`;
   message += `📅 Date: ${date}\n`;

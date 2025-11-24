@@ -50,10 +50,11 @@ body {
   background-color: var(--bg-dark);
   color: var(--text-main);
   font-family: var(--font-body);
+  /* NEW: Prevent horizontal scroll */
   overflow-x: hidden;
+  width: 100%;
   -webkit-font-smoothing: antialiased;
 }
-
 a {
   text-decoration: none;
   color: inherit;
@@ -502,7 +503,8 @@ footer .logo-anim {
 
 .room-card {
   background: var(--bg-card);
-  width: 350px;
+  width: 100%;
+  max-width: 350px;
   /* REMOVED PADDING HERE so slider touches edges */
   padding: 0;
   text-align: center;
@@ -1026,6 +1028,24 @@ select option {
 @media (max-width: 768px) {
   .mobile-toggle {
     display: flex;
+  }
+
+  /* NEW: Reduce side padding for mobile */
+  .container {
+    padding: 0 20px;
+  }
+
+  header {
+    padding: 0 20px;
+  }
+
+  header.scrolled {
+    padding: 15px 20px;
+  }
+
+  /* Ensure Hero text doesn't overflow */
+  .hero h1 {
+    font-size: 12vw; /* Use viewport width units for perfect fit */
   }
 }
 /* --- UPDATED EXIT BUTTON STYLES --- */
